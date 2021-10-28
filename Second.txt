@@ -1,0 +1,51 @@
+	ORG 0	/Origin of program is HEX 0
+	LDA NUMB /Load Numb
+	CMA /2's complement Numb
+	INC 
+	INC / For Bubble Sort Loop
+	STA NBR1 /Store NBR1
+LOP1,	LDA NBR1
+	STA NBR2 /Store NBR2
+	LDA PTR1 /Load PTR 1
+	STA PTR2 /Store PTR2
+	STA PTR3 /Store PTR3
+LOP2,	ISZ PTR3 /PTR3 +1
+	LDA PTR2 I /Load PTR2 Data
+	STA TMP /Store TMP
+	LDA PTR3 I /Load PTR3 Data
+	CMA /2's complement PTR3 I
+	INC
+	ADD TMP
+	SNA
+	BUN CON	
+	LDA PTR3 I /Load PTR3 Data Swap(PTR2, PTR3)
+	STA PTR2 I /Store PTR2
+	LDA TMP /Load TMP
+	STA PTR3 I /Store PTR3	
+CON,	ISZ PTR2
+	ISZ NBR2
+	BUN LOP2 /Go LOP2
+	ISZ NBR1
+	BUN LOP1 /Go LOP1
+	HLT
+
+TMP,	hex 0
+NBR1,	hex 0
+NBR2,	hex 0
+PTR1,	hex 41
+PTR2,	hex 0
+PTR3,	hex 0
+
+ORG	40
+NUMB,	dec 10
+	/ Tets Data 2
+DATA,	hex 1234
+	hex 2101
+	hex 7000
+	hex 4000
+	hex 7569
+	hex 6311
+	hex 1D20
+	hex 7821
+	hex 2097
+	hex 76FB
