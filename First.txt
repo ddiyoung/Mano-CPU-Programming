@@ -1,0 +1,36 @@
+	ORG 0	/Origin of program is HEX 0
+	LDA NUMB /Load Numb
+	CMA /2's complement Numb
+	INC 
+	STA NBR /Store Numb to NBR
+	CLA /Clear AC
+LOP,	LDA PTR I /Load PTR Data
+	CMA /2's complement Data
+	INC
+	ADD MAX
+	SNA /If (PTR I)' + MAX >= 0
+	BUN CON /Go to CON,
+	LDA PTR I /Else
+	STA MAX /Store (PTR I) to MAX
+CON,	ISZ PTR 
+	ISZ NBR
+	BUN LOP	/Go LOP
+	HLT
+NBR,	hex 0
+PTR,	hex 41
+
+ORG	40
+NUMB,	dec 10
+	/ Test Data 2
+DATA,	hex 1234
+	hex 2101
+	hex 7000
+	hex 4000
+	hex 7569
+	hex 6311
+	hex 1D20
+	hex 7821
+	hex 2097
+	hex 76FB
+MAX,	hex 0
+	END
